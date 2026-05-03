@@ -1,17 +1,20 @@
 import { useState } from "react";
 import { Github, Linkedin, Twitter, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { cn } from "@/lib/utils";
 
 const nav = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "#home", id: "home" },
+  { label: "About", href: "#about", id: "about" },
+  { label: "Services", href: "#services", id: "services" },
+  { label: "Projects", href: "#projects", id: "projects" },
+  { label: "Contact", href: "#contact", id: "contact" },
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const active = useActiveSection();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
@@ -21,15 +24,24 @@ export function Header() {
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {nav.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {n.label}
-            </a>
-          ))}
+          {nav.map((n) => {
+            const isActive = active === n.id;
+            return (
+              <a
+                key={n.href}
+                href={n.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "relative text-sm transition-colors",
+                  isActive
+                    ? "text-foreground after:absolute after:-bottom-[22px] after:left-0 after:right-0 after:h-px after:bg-primary"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {n.label}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
@@ -60,16 +72,25 @@ export function Header() {
       {open && (
         <div className="border-t border-border bg-background md:hidden">
           <nav className="mx-auto flex max-w-6xl flex-col px-6 py-4">
-            {nav.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                onClick={() => setOpen(false)}
-                className="py-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {n.label}
-              </a>
-            ))}
+            {nav.map((n) => {
+              const isActive = active === n.id;
+              return (
+                <a
+                  key={n.href}
+                  href={n.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={cn(
+                    "border-l-2 py-3 pl-3 text-sm transition-colors",
+                    isActive
+                      ? "border-primary text-foreground"
+                      : "border-transparent text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  {n.label}
+                </a>
+              );
+            })}
           </nav>
         </div>
       )}
