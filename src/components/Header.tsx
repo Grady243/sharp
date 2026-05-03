@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Github, Linkedin, Twitter, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { cn } from "@/lib/utils";
 
 const nav = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "#home", id: "home" },
+  { label: "About", href: "#about", id: "about" },
+  { label: "Services", href: "#services", id: "services" },
+  { label: "Projects", href: "#projects", id: "projects" },
+  { label: "Contact", href: "#contact", id: "contact" },
 ];
 
 export function Header() {
