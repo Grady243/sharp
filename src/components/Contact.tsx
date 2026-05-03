@@ -18,32 +18,37 @@ export function Contact() {
 
   return (
     <section id="contact" className="border-b border-border">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-24 md:grid-cols-5 md:py-32">
+      <div className="mx-auto grid max-w-6xl gap-16 px-6 py-24 md:grid-cols-5 md:py-32">
+        {/* LEFT SIDE */}
         <div className="md:col-span-2">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
             04 — Contact
           </p>
+
           <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
-            Let's build something sharp.
+            Let’s build something sharp.
           </h2>
+
           <p className="mt-6 text-muted-foreground">
-            Tell me about your project. I reply within two business days.
+            Tell me about your project. I usually respond within two business days.
           </p>
 
-          <ul className="mt-10 space-y-5 border-t border-border pt-8">
+          <ul className="mt-10 space-y-6 border-t border-border pt-8">
             {details.map((d) => (
               <li key={d.label} className="flex items-start gap-4">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center border border-border">
+                <div className="flex h-10 w-10 items-center justify-center border border-border">
                   <d.icon className="h-4 w-4" strokeWidth={1.5} />
                 </div>
+
                 <div>
-                  <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  <div className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
                     {d.label}
                   </div>
+
                   {d.href ? (
                     <a
                       href={d.href}
-                      className="mt-1 block text-sm text-foreground underline-offset-4 hover:underline"
+                      className="mt-1 block text-sm text-foreground hover:underline underline-offset-4"
                     >
                       {d.value}
                     </a>
@@ -55,31 +60,46 @@ export function Contact() {
             ))}
           </ul>
         </div>
+        {/* RIGHT SIDE - FORM */}
+        <div className="md:col-span-3 space-y-8">
+          <form onSubmit={onSubmit} className="space-y-6">
+            <div className="grid gap-6 md:grid-cols-2">
+              <Field label="Name" name="name" type="text" placeholder="Jane Doe" />
+              <Field label="Email" name="email" type="email" placeholder="jane@example.com" />
+            </div>
 
-        <form onSubmit={onSubmit} className="space-y-5 md:col-span-3">
-          <div className="grid gap-5 md:grid-cols-2">
-            <Field label="Name" name="name" type="text" placeholder="Jane Doe" />
-            <Field label="Email" name="email" type="email" placeholder="jane@example.com" />
-          </div>
-          <div>
-            <label className="mb-2 block font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              Message
-            </label>
-            <textarea
-              required
-              rows={6}
-              placeholder="Tell me what you're working on..."
-              className="w-full border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary"
-            />
-          </div>
-          <button
-            type="submit"
-            className="group inline-flex items-center gap-2 bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
-          >
-            {sent ? "Sent — thank you" : "Send message"}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
-        </form>
+            {/* NEW INPUT */}
+            <div>
+              <Field
+                label="Subject"
+                name="subject"
+                type="text"
+                placeholder="Website redesign, portfolio, etc..."
+              />
+            </div>
+
+            <div>
+              <label className="mb-2 block font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                Message
+              </label>
+
+              <textarea
+                required
+                rows={7}
+                placeholder="Tell me what you're working on..."
+                className="w-full border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="group inline-flex items-center gap-2 bg-foreground px-6 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80"
+            >
+              {sent ? "Message sent" : "Send message"}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </form>{" "}
+        </div>{" "}
       </div>
     </section>
   );
@@ -98,9 +118,10 @@ function Field({
 }) {
   return (
     <div>
-      <label className="mb-2 block font-mono text-xs uppercase tracking-widest text-muted-foreground">
+      <label className="mb-2 block font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
         {label}
       </label>
+
       <input
         required
         name={name}
