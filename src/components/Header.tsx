@@ -34,7 +34,7 @@ export function Header() {
                 className={cn(
                   "relative text-sm transition-colors",
                   isActive
-                    ? "text-foreground after:absolute after:-bottom-[22px] after:left-0 after:right-0 after:h-px after:bg-primary"
+                    ? "font-medium text-foreground after:absolute after:-bottom-[21px] after:left-0 after:right-0 after:h-[2px] after:bg-primary"
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
