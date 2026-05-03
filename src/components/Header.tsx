@@ -6,6 +6,7 @@ const nav = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -15,8 +16,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <a href="#home" className="font-mono text-sm font-bold tracking-tight">
-          ◆ studio<span className="text-primary">.</span>
+        <a href="#home" className="font-mono text-base font-bold tracking-tight">
+          Grady<span className="text-primary">.</span>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
