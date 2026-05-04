@@ -3,7 +3,6 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
-import { Projects } from "@/components/Projects";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -11,11 +10,11 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Grady Portfolio" },
+      { title: "Grady Masirika - Developer & Designer" },
       {
         name: "description",
         content:
-          "Independent designer and developer crafting precise, modern digital products. Product design, web development, brand identity and performance audits.",
+          "Independent developer and designer crafting minimal, functional digital products. Product design, web development, brand identity and performance audits.",
       },
     ],
   }),
@@ -29,7 +28,6 @@ function Index() {
         <Hero />
         <About />
         <Services />
-        <Projects />
         <Contact />
       </main>
       <Footer />

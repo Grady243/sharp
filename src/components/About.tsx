@@ -1,57 +1,56 @@
 const stats = [
-  { k: "10+", v: "Projects built" },
-  { k: "500+", v: "Hours of coding" },
-  { k: "15+", v: "Technologies used" },
-  { k: "100%", v: "Commitment" },
+  { value: "10+", label: "Projects built" },
+  { value: "500+", label: "Hours of coding" },
+  { value: "15+", label: "Technologies" },
+  { value: "100%", label: "Commitment" },
 ];
 
 export function About() {
   return (
     <section id="about" className="border-b border-border">
-      <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <div className="grid gap-16 md:grid-cols-2 md:items-center">
+      <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <div className="grid gap-12 md:grid-cols-2 md:items-start md:gap-16">
           {/* LEFT */}
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              01 — About
-            </p>
+            <p className="text-sm text-muted-foreground">About</p>
 
-            <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
               Building clean interfaces with purpose.
             </h2>
 
-            <p className="mt-6 text-muted-foreground max-w-lg">
-              I’m Grady, a frontend developer and UI designer focused on building minimal,
-              functional, and high-performance digital products.
-            </p>
+            <div className="mt-6 space-y-4 text-muted-foreground">
+              <p className="leading-relaxed">
+                {"I'm"} Grady, a frontend developer and UI designer focused on building minimal,
+                functional, and high-performance digital products.
+              </p>
 
-            <div className="mt-6 space-y-4 text-muted-foreground max-w-lg">
-              <p>
+              <p className="leading-relaxed">
                 My approach is simple: understand the problem, design with clarity, and build with
                 clean, scalable code.
               </p>
 
-              <p>
+              <p className="leading-relaxed">
                 I care about performance, usability, and simplicity — removing everything
                 unnecessary to focus on what really matters.
               </p>
             </div>
           </div>
 
-          {/* RIGHT - SQUARE STATS */}
-          <div className="flex justify-center items-center">
-            <div className="grid grid-cols-2 gap-px border border-border bg-border max-w-[360px] w-full">
-              {stats.map((s) => (
-                <div
-                  key={s.v}
-                  className="aspect-square bg-background flex flex-col items-center justify-center p-4 text-center"
-                >
-                  <div className="text-2xl font-bold tracking-tight">{s.k}</div>
-
-                  <div className="mt-1 text-[11px] text-muted-foreground">{s.v}</div>
-                </div>
-              ))}
-            </div>
+          {/* RIGHT - STATS */}
+          <div className="grid grid-cols-2 gap-px border border-border bg-border">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="flex flex-col items-center justify-center bg-background p-6 text-center md:p-8"
+              >
+                <span className="text-2xl font-semibold tracking-tight md:text-3xl">
+                  {stat.value}
+                </span>
+                <span className="mt-1 text-xs text-muted-foreground">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
