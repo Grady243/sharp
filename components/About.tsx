@@ -20,7 +20,7 @@ export function About() {
 
             <div className="mt-6 space-y-4 text-muted-foreground">
               <p className="leading-relaxed">
-                {"I'm"} Grady, a frontend developer and UI designer focused on building minimal,
+                I&apos;m Grady, a frontend developer and UI designer focused on building minimal,
                 functional, and high-performance digital products.
               </p>
 

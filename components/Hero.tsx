@@ -1,4 +1,4 @@
-import Profil from "@/assets/profil.png";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export function Hero() {
@@ -42,10 +42,13 @@ export function Hero() {
         {/* IMAGE */}
         <div className="relative order-1 md:order-2">
           <div className="relative border border-border">
-            <img
-              src={Profil}
+            <Image
+              src="/images/profil.png"
               alt="Grady Masirika - Developer and Designer"
+              width={600}
+              height={600}
               className="aspect-square w-full object-cover"
+              priority
             />
           </div>
         </div>

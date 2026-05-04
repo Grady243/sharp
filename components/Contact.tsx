@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, type FormEvent } from "react";
 import { ArrowRight, Mail, MapPin } from "lucide-react";
 
@@ -33,7 +35,7 @@ export function Contact() {
             <p className="text-sm text-muted-foreground">Contact</p>
 
             <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-              {"Let's"} build something sharp.
+              Let&apos;s build something sharp.
             </h2>
 
             <p className="mt-4 text-muted-foreground">
@@ -116,7 +118,7 @@ export function Contact() {
                 <textarea
                   required
                   rows={5}
-                  placeholder="Tell me what you're working on..."
+                  placeholder="Tell me what you&apos;re working on..."
                   className="w-full resize-none border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
                 />
               </div>
