@@ -1,10 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ 
+const jetbrainsMono = JetBrains_Mono({ 
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-mono",
+  weight: ["300", "400", "500", "600"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
 });
 
 export const metadata: Metadata = {
@@ -32,8 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} bg-background`} suppressHydrationWarning>
-      <body className="bg-background text-foreground font-sans">
+    <html lang="en" className={`${jetbrainsMono.variable} ${spaceGrotesk.variable} bg-background`} suppressHydrationWarning>
+      <body className="bg-background text-foreground font-mono leading-relaxed">
         {children}
       </body>
     </html>

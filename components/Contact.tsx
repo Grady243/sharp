@@ -1,19 +1,25 @@
 "use client";
 
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { useState, type FormEvent } from "react";
-import { ArrowRight, Mail, MapPin } from "lucide-react";
 
 const contactInfo = [
-  { 
-    icon: Mail, 
-    label: "Email", 
-    value: "hello@grady.studio", 
-    href: "mailto:hello@grady.studio" 
+  {
+    icon: Mail,
+    label: "Email",
+    value: "gradyaganzemasirika@gmail.com",
+    href: "mailto:gradyaganzemasirika@gmail.com",
   },
-  { 
-    icon: MapPin, 
-    label: "Location", 
-    value: "Berlin, Germany" 
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+243 857 292 985",
+    href: "tel:+243857292985",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Goma, DRC",
   },
 ];
 
@@ -32,7 +38,9 @@ export function Contact() {
         <div className="grid gap-12 md:grid-cols-5 md:gap-16">
           {/* LEFT SIDE */}
           <div className="md:col-span-2">
-            <p className="text-sm text-muted-foreground">Contact</p>
+            <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary">
+              - Contact
+            </h2>
 
             <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
               Let&apos;s build something sharp.
@@ -72,9 +80,7 @@ export function Contact() {
             <form onSubmit={onSubmit} className="space-y-5">
               <div className="grid gap-5 md:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-xs text-muted-foreground">
-                    Name
-                  </label>
+                  <label className="mb-2 block text-xs text-muted-foreground">Name</label>
                   <input
                     required
                     name="name"
@@ -85,9 +91,7 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-xs text-muted-foreground">
-                    Email
-                  </label>
+                  <label className="mb-2 block text-xs text-muted-foreground">Email</label>
                   <input
                     required
                     name="email"
@@ -99,9 +103,7 @@ export function Contact() {
               </div>
 
               <div>
-                <label className="mb-2 block text-xs text-muted-foreground">
-                  Subject
-                </label>
+                <label className="mb-2 block text-xs text-muted-foreground">Subject</label>
                 <input
                   required
                   name="subject"
@@ -112,13 +114,11 @@ export function Contact() {
               </div>
 
               <div>
-                <label className="mb-2 block text-xs text-muted-foreground">
-                  Message
-                </label>
+                <label className="mb-2 block text-xs text-muted-foreground">Message</label>
                 <textarea
                   required
                   rows={5}
-                  placeholder="Tell me what you&apos;re working on..."
+                  placeholder="Tell me what you're working on..."
                   className="w-full resize-none border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
                 />
               </div>

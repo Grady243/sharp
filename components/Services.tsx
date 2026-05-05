@@ -1,10 +1,11 @@
-import { Code2, Layout, Sparkles, Gauge } from "lucide-react";
+import { Code2, Gauge, Layout, Sparkles } from "lucide-react";
 
 const services = [
   {
     icon: Layout,
     title: "Product Design",
-    description: "Interfaces and design systems built around real user workflows and brand clarity.",
+    description:
+      "Interfaces and design systems built around real user workflows and brand clarity.",
   },
   {
     icon: Code2,
@@ -19,7 +20,8 @@ const services = [
   {
     icon: Gauge,
     title: "Performance Audits",
-    description: "Deep dives into Core Web Vitals, accessibility and code quality with a clear plan.",
+    description:
+      "Deep dives into Core Web Vitals, accessibility and code quality with a clear plan.",
   },
 ];
 
@@ -28,7 +30,9 @@ export function Services() {
     <section id="services" className="border-b border-border bg-muted/50">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="mb-12">
-          <p className="text-sm text-muted-foreground">Services</p>
+          <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary">
+            - Services
+          </h2>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
             What I do, end to end.
           </h2>
@@ -38,7 +42,7 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group flex flex-col bg-background p-6 transition-colors hover:bg-muted/50 md:p-8"
+              className="group flex flex-col bg-background p-6 transition-colors duration-300 hover:bg-muted/50 md:p-8"
             >
               <service.icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
 
@@ -48,9 +52,7 @@ export function Services() {
                 {service.description}
               </p>
 
-              <div className="mt-6 text-xs text-muted-foreground">
-                0{index + 1}
-              </div>
+              <div className="mt-6 text-xs text-muted-foreground">0{index + 1}</div>
             </div>
           ))}
         </div>
