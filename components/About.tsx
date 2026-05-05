@@ -14,7 +14,9 @@ export function About() {
         <div className="grid gap-12 md:grid-cols-2 md:items-start md:gap-20">
           {/* LEFT */}
           <div>
-            <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-muted-foreground">- About</h2>
+            <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary">
+              - About
+            </h2>
 
             <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
               Building clean interfaces with purpose.
@@ -39,7 +41,7 @@ export function About() {
 
             <div className="mt-10">
               <a
-                href="/cv.pdf"
+                href="/GradyCV.pdf"
                 download
                 className="inline-flex items-center gap-2 border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-all hover:bg-transparent hover:text-foreground"
               >

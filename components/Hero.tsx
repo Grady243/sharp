@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export function Hero() {
   return (
@@ -7,7 +7,7 @@ export function Hero() {
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-2 md:items-center md:py-24 lg:py-32">
         {/* TEXT */}
         <div className="order-2 md:order-1">
-          <h2 className="mb-4 text-xs font-heading font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+          <h2 className="mb-4 text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary">
             - Independent Developer & Designer
           </h2>
 
