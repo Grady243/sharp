@@ -38,7 +38,7 @@ export function Services() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group flex flex-col bg-background p-6 transition-colors hover:bg-muted/50 md:p-8"
+              className="group flex flex-col bg-background p-6 transition-all duration-300 hover:bg-muted/50 hover:-translate-y-1 hover:shadow-lg md:p-8"
             >
               <service.icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
 

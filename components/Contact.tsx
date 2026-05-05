@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { ArrowRight, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 
 const contactInfo = [
   { 
@@ -9,6 +9,12 @@ const contactInfo = [
     label: "Email", 
     value: "hello@grady.studio", 
     href: "mailto:hello@grady.studio" 
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+49 123 4567 890",
+    href: "tel:+491234567890"
   },
   { 
     icon: MapPin, 

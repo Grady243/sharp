@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         mono: ["var(--font-mono)", "monospace"],
-        heading: ["var(--font-chivo)", "sans-serif"],
+        heading: ["var(--font-heading)", "sans-serif"],
       },
       colors: {
         background: "var(--background)",
