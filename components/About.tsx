@@ -14,7 +14,7 @@ export function About() {
         <div className="grid gap-12 md:grid-cols-2 md:items-start md:gap-20">
           {/* LEFT */}
           <div>
-            <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-muted-foreground">About</h2>
+            <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-muted-foreground">- About</h2>
 
             <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
               Building clean interfaces with purpose.
@@ -50,11 +50,11 @@ export function About() {
           </div>
 
           {/* RIGHT - STATS */}
-          <div className="grid grid-cols-2 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 gap-px border border-border bg-border">
             {stats.map((stat) => (
               <div
                 key={stat.label}
-                className="flex aspect-square flex-col items-center justify-center rounded-xl border border-border bg-card p-8 text-center transition-colors hover:border-foreground/20 md:p-10"
+                className="flex aspect-square flex-col items-center justify-center bg-background p-8 text-center md:p-10"
               >
                 <span className="text-3xl font-semibold tracking-tight md:text-4xl">
                   {stat.value}

@@ -8,7 +8,7 @@ export function Hero() {
         {/* TEXT */}
         <div className="order-2 md:order-1">
           <h2 className="mb-4 text-xs font-heading font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-            Independent Developer & Designer
+            - Independent Developer & Designer
           </h2>
 
           <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-6xl">

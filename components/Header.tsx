@@ -3,9 +3,9 @@
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/lib/utils";
 import { Github, Linkedin, Menu, Twitter, X } from "lucide-react";
+import { Chivo } from "next/font/google";
 import { useState } from "react";
 import { ThemeToggle } from "./ThemeToggle";
-import { Chivo } from "next/font/google";
 
 const chivo = Chivo({
   subsets: ["latin"],
@@ -34,11 +34,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         {/* LOGO */}
-        <a
-          href="#home"
-          className="text-2xl font-semibold tracking-tight text-foreground"
-          style={{ fontFamily: "verdana" }}
-        >
+        <a href="#home" className="text-2xl font-semibold tracking-tight text-foreground">
           Grady Masirika
         </a>
 
