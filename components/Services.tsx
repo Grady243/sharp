@@ -28,7 +28,7 @@ export function Services() {
     <section id="services" className="border-b border-border bg-muted/50">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="mb-12">
-          <p className="text-sm text-muted-foreground">Services</p>
+          <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-muted-foreground">Services</h2>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
             What I do, end to end.
           </h2>

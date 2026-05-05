@@ -32,7 +32,7 @@ export function Contact() {
         <div className="grid gap-12 md:grid-cols-5 md:gap-16">
           {/* LEFT SIDE */}
           <div className="md:col-span-2">
-            <p className="text-sm text-muted-foreground">Contact</p>
+            <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-muted-foreground">Contact</h2>
 
             <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
               Let&apos;s build something sharp.

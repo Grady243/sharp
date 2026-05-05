@@ -1,10 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { Github, Linkedin, Twitter, Menu, X } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { cn } from "@/lib/utils";
+import { Github, Linkedin, Menu, Twitter, X } from "lucide-react";
+import { useState } from "react";
+import { ThemeToggle } from "./ThemeToggle";
+import { Chivo } from "next/font/google";
+
+const chivo = Chivo({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  display: "swap",
+});
 
 const nav = [
   { label: "Home", href: "#home", id: "home" },
@@ -27,7 +34,11 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         {/* LOGO */}
-        <a href="#home" className="text-lg font-semibold tracking-tight text-foreground">
+        <a
+          href="#home"
+          className="text-2xl font-semibold tracking-tight text-foreground"
+          style={{ fontFamily: "verdana" }}
+        >
           Grady Masirika
         </a>
 
@@ -42,9 +53,7 @@ export function Header() {
                 href={n.href}
                 className={cn(
                   "text-sm transition-all duration-200",
-                  isActive
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground",
+                  isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {n.label}
@@ -120,9 +129,7 @@ export function Header() {
                   onClick={() => setOpen(false)}
                   className={cn(
                     "py-3 text-sm transition-colors",
-                    isActive
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground",
+                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   {n.label}
