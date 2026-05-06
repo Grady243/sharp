@@ -13,14 +13,14 @@ const projects = [
     description:
       "An all-in-one SaaS platform that simplifies store management by handling inventory, billing, and sales, helping businesses run efficiently and stay organized.",
     tech: ["Next.js", "Node.js", "MongoDB"],
-    link: "#",
+    link: "https://systeme-facturation-tau.vercel.app/",
   },
   {
     title: "Zua Place",
     description:
       "Zua Place is a centralized platform for managing hotel room bookings in the Ituri province of the Democratic Republic of Congo. Currently under development.",
     tech: ["Next.js", "TypeScript", "PHP", "MongoDB"],
-    link: "#",
+    link: "https://zuaplace.vercel.app/",
   },
 ];
 
