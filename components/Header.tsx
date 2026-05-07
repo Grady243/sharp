@@ -5,24 +5,21 @@ import { cn } from "@/lib/utils";
 import { Github, Linkedin, Menu, Twitter, X } from "lucide-react";
 import { Chivo } from "next/font/google";
 import { useState } from "react";
+import { LanguageToggle } from "./LanguageToggle";
 import { ThemeToggle } from "./ThemeToggle";
-
-const chivo = Chivo({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  display: "swap",
-});
-
-const nav = [
-  { label: "Home", href: "#home", id: "home" },
-  { label: "About", href: "#about", id: "about" },
-  { label: "Services", href: "#services", id: "services" },
-  { label: "Projects", href: "#projects", id: "projects" },
-  { label: "Contact", href: "#contact", id: "contact" },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const nav = [
+    { label: t.nav.home, href: "#home", id: "home" },
+    { label: t.nav.about, href: "#about", id: "about" },
+    { label: t.nav.services, href: "#services", id: "services" },
+    { label: t.nav.projects, href: "#projects", id: "projects" },
+    { label: t.nav.contact, href: "#contact", id: "contact" },
+  ];
 
   let active = "home";
   try {
@@ -93,13 +90,15 @@ export function Header() {
 
           <div className="ml-2 h-4 w-px bg-border" />
 
-          <div className="ml-2">
+          <div className="ml-2 flex items-center gap-2">
+            <LanguageToggle />
             <ThemeToggle />
           </div>
         </div>
 
         {/* MOBILE BUTTON */}
         <div className="flex items-center gap-3 md:hidden">
+          <LanguageToggle />
           <ThemeToggle />
 
           <button

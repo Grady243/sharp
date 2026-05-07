@@ -32,6 +32,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+import { LanguageProvider } from "@/context/LanguageContext";
+
 export default function RootLayout({
   children,
 }: {
@@ -40,7 +42,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jetbrainsMono.variable} ${spaceGrotesk.variable} bg-background`} suppressHydrationWarning>
       <body className="bg-background text-foreground font-mono leading-relaxed">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,30 +1,32 @@
 "use client";
 
+import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "gradyaganzemasirika@gmail.com",
-    href: "mailto:gradyaganzemasirika@gmail.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+243 857 292 985",
-    href: "tel:+243857292985",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Goma, DRC",
-  },
-];
-
 export function Contact() {
+  const { t } = useLanguage();
   const [sent, setSent] = useState(false);
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: "gradyaganzemasirika@gmail.com",
+      href: "mailto:gradyaganzemasirika@gmail.com",
+    },
+    {
+      icon: Phone,
+      label: t.contact.labels.email === "E-mail" ? "Téléphone" : "Phone", // Simple check or add to translations
+      value: "+243 857 292 985",
+      href: "tel:+243857292985",
+    },
+    {
+      icon: MapPin,
+      label: t.contact.labels.email === "E-mail" ? "Localisation" : "Location",
+      value: "Goma, DRC",
+    },
+  ];
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -39,15 +41,15 @@ export function Contact() {
           {/* LEFT SIDE */}
           <div className="md:col-span-2">
             <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary">
-              - Contact
+              {t.contact.tag}
             </h2>
 
             <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-              Let&apos;s build something sharp.
+              {t.contact.title}
             </h2>
 
             <p className="mt-4 text-muted-foreground">
-              Tell me about your project. I usually respond within two business days.
+              {t.contact.description}
             </p>
 
             <ul className="mt-8 space-y-4">
@@ -80,45 +82,45 @@ export function Contact() {
             <form onSubmit={onSubmit} className="space-y-5">
               <div className="grid gap-5 md:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-xs text-muted-foreground">Name</label>
+                  <label className="mb-2 block text-xs text-muted-foreground">{t.contact.labels.name}</label>
                   <input
                     required
                     name="name"
                     type="text"
-                    placeholder="Jane Doe"
+                    placeholder={t.contact.placeholders.name}
                     className="w-full border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-xs text-muted-foreground">Email</label>
+                  <label className="mb-2 block text-xs text-muted-foreground">{t.contact.labels.email}</label>
                   <input
                     required
                     name="email"
                     type="email"
-                    placeholder="jane@example.com"
+                    placeholder={t.contact.placeholders.email}
                     className="w-full border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="mb-2 block text-xs text-muted-foreground">Subject</label>
+                <label className="mb-2 block text-xs text-muted-foreground">{t.contact.labels.subject}</label>
                 <input
                   required
                   name="subject"
                   type="text"
-                  placeholder="Website redesign, portfolio..."
+                  placeholder={t.contact.placeholders.subject}
                   className="w-full border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
                 />
               </div>
 
               <div>
-                <label className="mb-2 block text-xs text-muted-foreground">Message</label>
+                <label className="mb-2 block text-xs text-muted-foreground">{t.contact.labels.message}</label>
                 <textarea
                   required
                   rows={5}
-                  placeholder="Tell me what you're working on..."
+                  placeholder={t.contact.placeholders.message}
                   className="w-full resize-none border border-border bg-background px-4 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground"
                 />
               </div>
@@ -127,7 +129,7 @@ export function Contact() {
                 type="submit"
                 className="group inline-flex items-center gap-2 bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
               >
-                {sent ? "Message sent" : "Send message"}
+                {sent ? t.contact.sent : t.contact.button}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </button>
             </form>
