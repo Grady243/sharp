@@ -1,39 +1,41 @@
+"use client";
+
+import { useLanguage } from "@/context/LanguageContext";
 import { ArrowUpRight, FolderOpen } from "lucide-react";
 
-const projects = [
-  {
-    title: "Afrix Global",
-    description:
-      "Afrix Global is an innovative EdTech company improving education in Africa through technology, making learning accessible for students, professionals, and entrepreneurs.",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-    link: "https://afrix-global.vercel.app/",
-  },
-  {
-    title: "etax solution RDC",
-    description:
-      "An all-in-one SaaS platform that simplifies store management by handling inventory, billing, and sales, helping businesses run efficiently and stay organized.",
-    tech: ["Next.js", "Node.js", "MongoDB"],
-    link: "https://systeme-facturation-tau.vercel.app/",
-  },
-  {
-    title: "Zua Place",
-    description:
-      "Zua Place is a centralized platform for managing hotel room bookings in the Ituri province of the Democratic Republic of Congo. Currently under development.",
-    tech: ["Next.js", "TypeScript", "PHP", "MongoDB"],
-    link: "https://zuaplace.vercel.app/",
-  },
-];
-
 export function Projects() {
+  const { t } = useLanguage();
+
+  const projects = [
+    {
+      title: "Afrix Global",
+      description: t.projects.items.afrix.description,
+      tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+      link: "https://afrix-global.vercel.app/",
+    },
+    {
+      title: "LOVIA",
+      description: t.projects.items.lovia.description,
+      tech: ["Next.js", "Node.js", "PostgreSQL", "Tailwind CSS"],
+      link: "https://lovia-zeta.vercel.app/",
+    },
+    {
+      title: "Zua Place",
+      description: t.projects.items.zuaplace.description,
+      tech: ["Next.js", "TypeScript", "PHP", "MongoDB"],
+      link: "https://zuaplace.vercel.app/",
+    },
+  ];
+
   return (
     <section id="projects" className="border-b border-border bg-background">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="mb-12">
           <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary">
-            - Projects
+            {t.projects.tag}
           </h2>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-            Selected works.
+            {t.projects.title}
           </h2>
         </div>
 
@@ -45,7 +47,7 @@ export function Projects() {
             >
               <div className="flex items-center justify-between">
                 <FolderOpen className="h-5 w-5 text-primary" strokeWidth={1.5} />
-                <a href={project.link} className="inline-flex">
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex">
                   <ArrowUpRight
                     className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100"
                     strokeWidth={1.5}

@@ -1,40 +1,43 @@
+"use client";
+
+import { useLanguage } from "@/context/LanguageContext";
 import { Code2, Gauge, Layout, Sparkles } from "lucide-react";
 
-const services = [
-  {
-    icon: Layout,
-    title: "Product Design",
-    description:
-      "Interfaces and design systems built around real user workflows and brand clarity.",
-  },
-  {
-    icon: Code2,
-    title: "Web Development",
-    description: "Production-grade React and TypeScript front-ends with a focus on performance.",
-  },
-  {
-    icon: Sparkles,
-    title: "Brand Identity",
-    description: "Marks, type systems and digital guidelines that stay sharp at every scale.",
-  },
-  {
-    icon: Gauge,
-    title: "Performance Audits",
-    description:
-      "Deep dives into Core Web Vitals, accessibility and code quality with a clear plan.",
-  },
-];
-
 export function Services() {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      icon: Layout,
+      title: t.services.items[0].title,
+      description: t.services.items[0].description,
+    },
+    {
+      icon: Code2,
+      title: t.services.items[1].title,
+      description: t.services.items[1].description,
+    },
+    {
+      icon: Sparkles,
+      title: t.services.items[2].title,
+      description: t.services.items[2].description,
+    },
+    {
+      icon: Gauge,
+      title: t.services.items[3].title,
+      description: t.services.items[3].description,
+    },
+  ];
+
   return (
     <section id="services" className="border-b border-border bg-muted/50">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="mb-12">
           <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary">
-            - Services
+            {t.services.tag}
           </h2>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-            What I do, end to end.
+            {t.services.title}
           </h2>
         </div>
 

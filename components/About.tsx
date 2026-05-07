@@ -1,13 +1,18 @@
+"use client";
+
+import { useLanguage } from "@/context/LanguageContext";
 import { FileText } from "lucide-react";
 
-const stats = [
-  { value: "10+", label: "Projects built" },
-  { value: "500+", label: "Hours of coding" },
-  { value: "15+", label: "Technologies" },
-  { value: "100%", label: "Commitment" },
-];
-
 export function About() {
+  const { t } = useLanguage();
+
+  const stats = [
+    { value: "10+", label: t.about.stats.projects },
+    { value: "500+", label: t.about.stats.hours },
+    { value: "15+", label: t.about.stats.tech },
+    { value: "100%", label: t.about.stats.commitment },
+  ];
+
   return (
     <section id="about" className="border-b border-border">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
@@ -15,28 +20,17 @@ export function About() {
           {/* LEFT */}
           <div>
             <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary">
-              - About
+              {t.about.tag}
             </h2>
 
             <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-              Building clean interfaces with purpose.
+              {t.about.title}
             </h2>
 
             <div className="mt-6 space-y-4 text-muted-foreground">
-              <p className="leading-relaxed">
-                I&apos;m Grady, a frontend developer and UI designer focused on building minimal,
-                functional, and high-performance digital products.
-              </p>
-
-              <p className="leading-relaxed">
-                My approach is simple: understand the problem, design with clarity, and build with
-                clean, scalable code.
-              </p>
-
-              <p className="leading-relaxed">
-                I care about performance, usability, and simplicity — removing everything
-                unnecessary to focus on what really matters.
-              </p>
+              <p className="leading-relaxed">{t.about.p1}</p>
+              <p className="leading-relaxed">{t.about.p2}</p>
+              <p className="leading-relaxed">{t.about.p3}</p>
             </div>
 
             <div className="mt-10">
@@ -46,7 +40,7 @@ export function About() {
                 className="inline-flex items-center gap-2 border border-foreground bg-foreground px-6 py-3 text-sm font-medium text-background transition-all hover:bg-transparent hover:text-foreground"
               >
                 <FileText className="h-4 w-4" />
-                Download CV
+                {t.about.cv}
               </a>
             </div>
           </div>
