@@ -3,6 +3,7 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { useState, type FormEvent } from "react";
+import { motion } from "framer-motion";
 
 export function Contact() {
   const { t } = useLanguage();
@@ -17,7 +18,7 @@ export function Contact() {
     },
     {
       icon: Phone,
-      label: t.contact.labels.email === "E-mail" ? "Téléphone" : "Phone", // Simple check or add to translations
+      label: t.contact.labels.email === "E-mail" ? "Téléphone" : "Phone",
       value: "+243 857 292 985",
       href: "tel:+243857292985",
     },
@@ -34,27 +35,61 @@ export function Contact() {
     setTimeout(() => setSent(false), 4000);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.215, 0.61, 0.355, 1],
+      },
+    },
+  };
+
   return (
-    <section id="contact" className="border-b border-border">
+    <section id="contact" className="border-b border-border overflow-hidden">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="grid gap-12 md:grid-cols-5 md:gap-16">
           {/* LEFT SIDE */}
-          <div className="md:col-span-2">
-            <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+            className="md:col-span-2"
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary"
+            >
               {t.contact.tag}
-            </h2>
+            </motion.h2>
 
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
+            <motion.h2
+              variants={itemVariants}
+              className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl"
+            >
               {t.contact.title}
-            </h2>
+            </motion.h2>
 
-            <p className="mt-4 text-muted-foreground">
+            <motion.p variants={itemVariants} className="mt-4 text-muted-foreground">
               {t.contact.description}
-            </p>
+            </motion.p>
 
-            <ul className="mt-8 space-y-4">
+            <motion.ul variants={containerVariants} className="mt-8 space-y-4">
               {contactInfo.map((item) => (
-                <li key={item.label} className="flex items-center gap-3">
+                <motion.li key={item.label} variants={itemVariants} className="flex items-center gap-3">
                   <div className="flex h-9 w-9 items-center justify-center border border-border">
                     <item.icon className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
                   </div>
@@ -72,13 +107,19 @@ export function Contact() {
                       <div className="text-sm text-foreground">{item.value}</div>
                     )}
                   </div>
-                </li>
+                </motion.li>
               ))}
-            </ul>
-          </div>
+            </motion.ul>
+          </motion.div>
 
           {/* RIGHT SIDE - FORM */}
-          <div className="md:col-span-3">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="md:col-span-3"
+          >
             <form onSubmit={onSubmit} className="space-y-5">
               <div className="grid gap-5 md:grid-cols-2">
                 <div>
@@ -125,15 +166,17 @@ export function Contact() {
                 />
               </div>
 
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 type="submit"
                 className="group inline-flex items-center gap-2 bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
               >
                 {sent ? t.contact.sent : t.contact.button}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

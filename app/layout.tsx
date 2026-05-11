@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
   },
+  icons: {
+    icon: "/images/profil.png",
+  },
 };
 
 export const viewport: Viewport = {

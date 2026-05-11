@@ -1,9 +1,18 @@
+"use client";
+
 import { Github, Linkedin, Twitter } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-6 md:flex-row">
+    <footer className="border-t border-border overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-6 md:flex-row"
+      >
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Grady Masirika. All rights reserved.
         </p>
@@ -39,7 +48,7 @@ export function Footer() {
             <Linkedin className="h-4 w-4" />
           </a>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 }

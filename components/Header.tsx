@@ -8,6 +8,7 @@ import { useState } from "react";
 import { LanguageToggle } from "./LanguageToggle";
 import { ThemeToggle } from "./ThemeToggle";
 import { useLanguage } from "@/context/LanguageContext";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -32,32 +33,50 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         {/* LOGO */}
-        <a href="#home" className="text-2xl font-semibold tracking-tight text-foreground">
+        <motion.a
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          href="#home"
+          className="text-2xl font-semibold tracking-tight text-foreground"
+        >
           Grady Masirika
-        </a>
+        </motion.a>
 
         {/* DESKTOP NAV - CENTERED */}
         <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
-          {nav.map((n) => {
+          {nav.map((n, i) => {
             const isActive = active === n.id;
 
             return (
-              <a
+              <motion.a
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
                 key={n.href}
                 href={n.href}
                 className={cn(
-                  "text-sm transition-all duration-200",
+                  "text-sm transition-all duration-200 relative",
                   isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {n.label}
-              </a>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNav"
+                    className="absolute -bottom-[21px] left-0 right-0 h-px bg-foreground"
+                  />
+                )}
+              </motion.a>
             );
           })}
         </nav>
 
         {/* RIGHT ICONS */}
-        <div className="hidden items-center gap-1 md:flex">
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="hidden items-center gap-1 md:flex"
+        >
           <a
             target="_blank"
             rel="noopener noreferrer"
@@ -94,7 +113,7 @@ export function Header() {
             <LanguageToggle />
             <ThemeToggle />
           </div>
-        </div>
+        </motion.div>
 
         {/* MOBILE BUTTON */}
         <div className="flex items-center gap-3 md:hidden">
@@ -112,61 +131,68 @@ export function Header() {
       </div>
 
       {/* MOBILE MENU */}
-      {open && (
-        <div className="border-t border-border bg-background md:hidden">
-          <nav className="mx-auto flex max-w-6xl flex-col px-6 py-4">
-            {nav.map((n) => {
-              const isActive = active === n.id;
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="border-t border-border bg-background md:hidden overflow-hidden"
+          >
+            <nav className="mx-auto flex max-w-6xl flex-col px-6 py-4">
+              {nav.map((n) => {
+                const isActive = active === n.id;
 
-              return (
+                return (
+                  <a
+                    key={n.href}
+                    href={n.href}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      "py-3 text-sm transition-colors",
+                      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                    )}
+                  >
+                    {n.label}
+                  </a>
+                );
+              })}
+
+              <div className="mt-4 flex items-center gap-2 border-t border-border pt-4">
                 <a
-                  key={n.href}
-                  href={n.href}
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    "py-3 text-sm transition-colors",
-                    isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
-                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/Grady243"
+                  aria-label="GitHub"
+                  className="p-2 text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  {n.label}
+                  <Github className="h-4 w-4" />
                 </a>
-              );
-            })}
 
-            <div className="mt-4 flex items-center gap-2 border-t border-border pt-4">
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://github.com/Grady243"
-                aria-label="GitHub"
-                className="p-2 text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Github className="h-4 w-4" />
-              </a>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://x.com/GradyMasirika"
+                  aria-label="Twitter"
+                  className="p-2 text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Twitter className="h-4 w-4" />
+                </a>
 
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://x.com/GradyMasirika"
-                aria-label="Twitter"
-                className="p-2 text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://www.linkedin.com/in/grady-masirika-aa92b6327/"
-                aria-label="LinkedIn"
-                className="p-2 text-muted-foreground transition-colors hover:text-foreground"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-            </div>
-          </nav>
-        </div>
-      )}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.linkedin.com/in/grady-masirika-aa92b6327/"
+                  aria-label="LinkedIn"
+                  className="p-2 text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
