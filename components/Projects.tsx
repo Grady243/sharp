@@ -17,7 +17,7 @@ export function Projects() {
     {
       title: "LOVIA",
       description: t.projects.items.lovia.description,
-      tech: ["Next.js", "Node.js", "PostgreSQL", "Tailwind CSS"],
+      tech: ["React", "Tailwind CSS", "MySQL"],
       link: "https://lovia-zeta.vercel.app/",
     },
     {
