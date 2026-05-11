@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/context/LanguageContext";
 import { FileText } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function About() {
   const { t } = useLanguage();
@@ -13,27 +14,60 @@ export function About() {
     { value: "100%", label: t.about.stats.commitment },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.215, 0.61, 0.355, 1],
+      },
+    },
+  };
+
   return (
-    <section id="about" className="border-b border-border">
+    <section id="about" className="border-b border-border overflow-hidden">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         <div className="grid gap-12 md:grid-cols-2 md:items-start md:gap-20">
           {/* LEFT */}
-          <div>
-            <h2 className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="text-xs font-heading font-semibold uppercase tracking-[0.2em] text-primary"
+            >
               {t.about.tag}
-            </h2>
+            </motion.h2>
 
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
+            <motion.h2
+              variants={itemVariants}
+              className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl"
+            >
               {t.about.title}
-            </h2>
+            </motion.h2>
 
-            <div className="mt-6 space-y-4 text-muted-foreground">
+            <motion.div variants={itemVariants} className="mt-6 space-y-4 text-muted-foreground">
               <p className="leading-relaxed">{t.about.p1}</p>
               <p className="leading-relaxed">{t.about.p2}</p>
               <p className="leading-relaxed">{t.about.p3}</p>
-            </div>
+            </motion.div>
 
-            <div className="mt-10">
+            <motion.div variants={itemVariants} className="mt-10">
               <a
                 href="/GradyCV.pdf"
                 download
@@ -42,14 +76,21 @@ export function About() {
                 <FileText className="h-4 w-4" />
                 {t.about.cv}
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* RIGHT - STATS */}
-          <div className="grid grid-cols-2 gap-px border border-border bg-border">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+            className="grid grid-cols-2 gap-px border border-border bg-border"
+          >
             {stats.map((stat) => (
-              <div
+              <motion.div
                 key={stat.label}
+                variants={itemVariants}
                 className="flex aspect-square flex-col items-center justify-center bg-background p-8 text-center md:p-10"
               >
                 <span className="text-3xl font-semibold tracking-tight md:text-4xl">
@@ -58,9 +99,9 @@ export function About() {
                 <span className="mt-2 text-xs font-heading uppercase tracking-widest text-muted-foreground">
                   {stat.label}
                 </span>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
