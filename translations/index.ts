@@ -6,6 +6,7 @@ export const translations = {
       home: "Home",
       about: "About",
       services: "Services",
+      skills: "Skills",
       projects: "Projects",
       contact: "Contact",
     },
@@ -53,6 +54,15 @@ export const translations = {
         },
       ],
     },
+    skills: {
+      tag: "- Skills",
+      title: "Tools & Technologies.",
+      categories: {
+        frontend: "Frontend",
+        uiux: "UI/UX & Design",
+        tools: "Tools"
+      }
+    },
     projects: {
       tag: "- Projects",
       title: "Selected works.",
@@ -93,6 +103,7 @@ export const translations = {
       home: "Accueil",
       about: "À propos",
       services: "Services",
+      skills: "Compétences",
       projects: "Projets",
       contact: "Contact",
     },
@@ -139,6 +150,15 @@ export const translations = {
           description: "Analyses approfondies des Core Web Vitals, de l'accessibilité et de la qualité du code avec un plan clair.",
         },
       ],
+    },
+    skills: {
+      tag: "- Compétences",
+      title: "Outils & Technologies.",
+      categories: {
+        frontend: "Frontend",
+        uiux: "UI/UX & Design",
+        tools: "Outils"
+      }
     },
     projects: {
       tag: "- Projets",
