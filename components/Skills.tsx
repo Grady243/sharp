@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export function Skills() {
   const { t } = useLanguage();
@@ -29,7 +29,7 @@ export function Skills() {
     "VS Code",
   ];
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -39,7 +39,7 @@ export function Skills() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
