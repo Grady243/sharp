@@ -26,7 +26,7 @@ export function Hero() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.215, 0.61, 0.355, 1], // easeOutCubic
+        ease: [0.215, 0.61, 0.355, 1] as const, // easeOutCubic
       },
     },
   };
@@ -38,7 +38,7 @@ export function Hero() {
       scale: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: "easeOut" as const,
         delay: 0.4,
       },
     },
